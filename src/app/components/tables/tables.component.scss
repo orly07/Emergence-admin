@@ -1,0 +1,13 @@
+.tables-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.table-card {
+  margin-top: 16px;
+
+  table {
+    width: 100%;
+  }
+}

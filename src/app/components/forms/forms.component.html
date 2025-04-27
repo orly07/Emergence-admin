@@ -1,0 +1,22 @@
+<div class="forms-container">
+  <h1 class="page-title">Forms</h1>
+
+  <mat-card class="forms-card">
+    <mat-card-header>
+      <mat-card-title>Available Forms</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let form of forms">
+          <mat-icon matListItemIcon>description</mat-icon>
+          <div matLine class="form-name">{{ form.name }}</div>
+          <div matLine class="form-description">{{ form.description }}</div>
+          <!-- this will automatically float to the right -->
+          <button mat-icon-button matListItemMeta (click)="downloadForm(form.downloadLink)">
+            <mat-icon>download</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

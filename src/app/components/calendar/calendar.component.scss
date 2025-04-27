@@ -1,0 +1,238 @@
+/* ------------ Container and Layout ------------ */
+
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  height: calc(100vh - 64px);
+
+  .calendar-card {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-with-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .view-toggle {
+    mat-button-toggle {
+      &.mat-button-toggle-checked {
+        background: #3f51b5;
+        color: #fff;
+      }
+    }
+  }
+
+  .calendar-content {
+    flex: 1;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    .calendar-wrapper {
+      flex: 1;
+      overflow: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 600px;
+      position: relative;
+    }
+  }
+}
+
+/* ------------ MONTH VIEW Fixes ------------ */
+
+.cal-month-view {
+  width: 100%;
+  border-collapse: separate !important;
+  border-spacing: 1px !important;
+
+  .cal-header {
+    .cal-cell {
+      background: #3f51b5 !important;
+      color: #fff !important;
+      padding: 12px !important;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
+
+  .cal-day-cell {
+    min-height: 120px;
+    position: relative;
+    vertical-align: top !important;
+    background: #fff !important;
+    padding: 8px !important;
+
+    &.cal-today {
+      background: #f0f0f0 !important;
+    }
+
+    .cal-day-number {
+      font-size: 1.2em !important;
+      font-weight: bold !important;
+      color: #333 !important;
+      margin: 4px !important;
+      float: right !important;
+    }
+
+    .cal-events {
+      margin-top: 28px !important; /* Push events below day number */
+      clear: both;
+    }
+
+    .cal-event {
+      background: #3f51b5 !important;
+      color: #fff !important;
+      padding: 4px 8px !important;
+      margin: 2px 0 !important;
+      border-radius: 4px !important;
+      font-size: 12px !important;
+    }
+  }
+}
+
+/* ------------ WEEK VIEW Styling ------------ */
+
+.cal-week-view {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.cal-week-view .cal-day-headers,
+.cal-week-view .cal-day-columns {
+  display: flex !important;
+}
+
+.cal-week-view .cal-day-header,
+.cal-week-view .cal-day-column {
+  flex: 1 1 0 !important;
+}
+
+.cal-week-view .cal-time-events {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+}
+
+.cal-week-view .cal-event {
+  background: #3f51b5 !important;
+  color: #fff !important;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.cal-week-view .cal-time-column {
+  width: 80px !important;
+  border-right: 2px solid #e0e0e0 !important;
+}
+
+.cal-week-view .cal-day-header {
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 12px !important;
+}
+
+.cal-week-view .cal-day-number {
+  font-size: 1.4em !important;
+  color: #3f51b5 !important;
+  margin-bottom: 4px !important;
+}
+
+/* ... existing styles ... */
+
+.calendar-content {
+  flex: 1;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  .calendar-wrapper {
+    flex: 1;
+    overflow: auto;
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    min-height: 600px;
+    position: relative;
+
+    /* Mobile-responsive scrolling */
+    @media (max-width: 768px) {
+      padding: 8px;
+      min-height: 400px;
+      overflow-x: auto; /* Enable horizontal scrolling */
+      -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+      
+      /* Hide scrollbar */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  }
+}
+
+/* ------------ Mobile Responsive Adjustments ------------ */
+@media (max-width: 768px) {
+  .calendar-container {
+    padding: 12px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* Month view adjustments */
+  .cal-month-view .cal-day-cell {
+    min-height: 80px !important;
+    padding: 4px !important;
+    
+    .cal-day-number {
+      font-size: 1em !important;
+    }
+    
+    .cal-event {
+      font-size: 10px !important;
+      padding: 2px 4px !important;
+    }
+  }
+
+  /* Week view adjustments */
+  .cal-week-view {
+    min-width: 600px; /* Force horizontal scroll */
+    
+    .cal-time-column {
+      width: 60px !important;
+    }
+    
+    .cal-day-header {
+      padding: 8px !important;
+      
+      .cal-day-number {
+        font-size: 1.1em !important;
+      }
+    }
+    
+    .cal-event {
+      font-size: 10px !important;
+      padding: 2px 4px !important;
+    }
+    
+    .cal-hour-segment {
+      height: 40px !important; /* Smaller time slots */
+    }
+  }
+
+  /* Toggle button adjustments */
+  .view-toggle {
+    margin-left: auto;
+    scale: 0.9;
+  }
+}

@@ -1,0 +1,34 @@
+<div class="calendar-container">
+  <mat-card class="calendar-card">
+    <mat-card-header class="header-with-toggle">
+      <mat-card-title>Calendar</mat-card-title>
+      <mat-button-toggle-group
+        [(value)]="view"
+        aria-label="Toggle calendar view"
+        class="view-toggle"
+      >
+        <mat-button-toggle [value]="CalendarView.Month">Month</mat-button-toggle>
+        <mat-button-toggle [value]="CalendarView.Week">Week</mat-button-toggle>
+      </mat-button-toggle-group>
+    </mat-card-header>
+    <mat-card-content class="calendar-content">
+      <div class="calendar-wrapper">
+        <ng-container [ngSwitch]="view">
+          <mwl-calendar-month-view
+            *ngSwitchCase="CalendarView.Month"
+            [viewDate]="viewDate"
+            [events]="events">
+          </mwl-calendar-month-view>
+          <mwl-calendar-week-view
+            *ngSwitchCase="CalendarView.Week"
+            [viewDate]="viewDate"
+            [events]="events"
+            [daysInWeek]="7"
+            [hourSegments]="4"
+            [hourSegmentHeight]="60">
+          </mwl-calendar-week-view>
+        </ng-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

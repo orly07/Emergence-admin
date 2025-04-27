@@ -1,0 +1,93 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+.stat-card {
+  text-align: center;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+
+    mat-icon {
+      font-size: 48px;
+      height: 48px;
+      width: 48px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+  }
+}
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+}
+
+.chart-card {
+  height: 400px; // Fixed height for consistency
+  display: flex;
+  flex-direction: column;
+
+  mat-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.table-card {
+  margin-top: 24px;
+
+  table {
+    width: 100%;
+    box-shadow: none; // Make sure walang shadow
+    border: 1px solid #ddd; // (optional) Light border para hindi mukhang "nakalutang"
+    border-radius: 8px; // (optional) Slightly rounded corners
+    overflow: hidden; // para hindi lumampas ang mga corners
+
+    th,
+    td {
+      border-bottom: 1px solid #eee; // line separator sa rows
+      padding: 12px 16px; // magandang padding
+    }
+
+    th {
+      background-color: #f5f5f5; // light gray background for headers
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+}

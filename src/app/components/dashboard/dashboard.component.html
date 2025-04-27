@@ -1,0 +1,103 @@
+<div class="dashboard-container">
+  <div class="header">
+    <h1>Dashboard</h1>
+  </div>
+
+  <div class="cards-grid">
+    <mat-card *ngFor="let card of cards" [class]="card.color" class="stat-card">
+      <mat-card-header>
+        <mat-card-title>{{ card.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-content">
+          <mat-icon>{{ card.icon }}</mat-icon>
+          <h2>{{ card.value }}</h2>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="charts-grid">
+    <!-- Daily Sales Chart -->
+    <mat-card class="chart-card">
+      <mat-card-header>
+        <mat-card-title>Daily Sales</mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngIf="chartsInitialized">
+        <canvas baseChart
+          [type]="lineChartType"
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          role="img"
+          aria-label="Daily sales trend chart">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Subscriptions Chart -->
+    <mat-card class="chart-card">
+      <mat-card-header>
+        <mat-card-title>Email Subscriptions</mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngIf="chartsInitialized">
+        <canvas baseChart
+          [type]="barChartType"
+          [data]="barChartData"
+          [options]="barChartOptions"
+          role="img"
+          aria-label="Email subscriptions growth chart">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Completed Tasks Chart -->
+    <mat-card class="chart-card">
+      <mat-card-header>
+        <mat-card-title>Completed Tasks</mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngIf="chartsInitialized">
+        <canvas baseChart
+          [type]="lineChartType2"
+          [data]="lineChartData2"
+          role="img"
+          aria-label="Completed tasks progress chart">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- Employee Table -->
+  <mat-card class="table-card">
+    <mat-card-header>
+      <mat-card-title>Employee Salaries</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="employees" class="mat-elevation-z8">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>Position</th>
+          <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+        </ng-container>
+
+        <!-- Salary Column -->
+        <ng-container matColumnDef="salary">
+          <th mat-header-cell *matHeaderCellDef>Salary</th>
+          <td mat-cell *matCellDef="let element">{{ element.salary }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

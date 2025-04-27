@@ -1,0 +1,39 @@
+  .profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+
+    mat-card {
+      padding: 24px;
+    }
+  }
+  .form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    mat-form-field {
+      flex: 1;
+    }
+
+    .small-field {
+      max-width: 80px;
+    }
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  // In app.component.scss
+mat-sidenav {
+  background: var(--mat-sys-color-surface-container-high);
+  color: var(--mat-sys-color-on-surface-container);
+}
