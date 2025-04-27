@@ -7,7 +7,33 @@
 .table-card {
   margin-top: 16px;
 
+  mat-card-content {
+    overflow-x: auto; /* Enable horizontal scrolling when needed */
+  }
+
   table {
     width: 100%;
+    table-layout: auto; /* Allow table columns to resize based on content */
+    border-collapse: collapse; /* Remove extra space between cells */
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word; /* Break long words to avoid overflow */
+  }
+
+  /* Ensure headers are readable on smaller screens */
+  th {
+    font-weight: bold;
+  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .table-card {
+    mat-card-content {
+      overflow-x: auto; /* Ensure horizontal scrolling is enabled */
+    }
   }
 }
