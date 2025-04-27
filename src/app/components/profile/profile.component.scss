@@ -1,39 +1,53 @@
-  .profile-container {
-    max-width: 800px;
-    margin: 0 auto;
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
 
-    mat-card {
-      padding: 24px;
-    }
+  mat-card {
+    padding: 24px;
   }
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap; /* Allow form fields to wrap on smaller screens */
+
+  mat-form-field {
+    flex: 1;
+    min-width: 250px; /* Set a minimum width for form fields */
+  }
+
+  .small-field {
+    max-width: 80px;
+  }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+@media (max-width: 600px) {
   .form-row {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-
-    mat-form-field {
-      flex: 1;
-    }
-
-    .small-field {
-      max-width: 80px;
-    }
-  }
-
-  .full-width {
-    width: 100%;
-    margin-bottom: 16px;
+    flex-direction: column; /* Stack form fields vertically on smaller screens */
   }
 
   .form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 16px;
-    margin-top: 24px;
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    align-items: stretch;
   }
 
-  // In app.component.scss
-mat-sidenav {
-  background: var(--mat-sys-color-surface-container-high);
-  color: var(--mat-sys-color-on-surface-container);
+  .form-actions button {
+    width: 100%; /* Make buttons full-width on small screens */
+    margin-bottom: 8px; /* Add spacing between buttons */
+  }
 }
